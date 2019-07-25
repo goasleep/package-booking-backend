@@ -16,4 +16,7 @@ public class PackageService {
         return packageRepository.findAll();
     }
 
+    public PackageOrder update(PackageOrder packageOrder) {
+        return (PackageOrder) packageRepository.save(packageOrder);
+    }
 }

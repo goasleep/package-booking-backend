@@ -4,9 +4,7 @@ import com.oocl.packagebooking.entity.PackageOrder;
 import com.oocl.packagebooking.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,10 @@ public class PackageController {
     @GetMapping("/package")
     public List<PackageOrder> findAllPackage(){
         return packageService.findAll();
+    }
+
+    @PutMapping("/package")
+    public PackageOrder updatePackage(@RequestBody PackageOrder packageOrder){
+        return packageService.update(packageOrder);
     }
 }
