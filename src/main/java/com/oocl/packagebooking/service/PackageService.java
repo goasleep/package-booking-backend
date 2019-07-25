@@ -23,4 +23,8 @@ public class PackageService {
     public void deleteById(int id) {
         packageRepository.deleteById(id);
     }
+
+    public void save(PackageOrder packageOrder) {
+        packageRepository.save(packageOrder);
+    }
 }

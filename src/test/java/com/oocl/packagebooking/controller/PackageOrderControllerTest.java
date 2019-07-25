@@ -64,4 +64,14 @@ public class PackageOrderControllerTest {
 
         verify(packageService).deleteById(anyInt());
     }
+
+    @Test
+    void should_add_a_package() throws Exception {
+        PackageOrder packageOrder = new PackageOrder("123","234");
+
+        ResultActions resultActions = mockMvc.perform(post("/packages").contentType(MediaType.APPLICATION_JSON)
+        .content(new ObjectMapper().writeValueAsString(packageOrder)));
+
+        verify(packageService).save(any());
+    }
 }

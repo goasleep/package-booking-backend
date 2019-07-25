@@ -19,7 +19,7 @@ public class PackageOrder {
 
     private String statue;
 
-    private Date date;
+    private long date;
 
     private float weight;
 
@@ -63,11 +63,11 @@ public class PackageOrder {
         this.statue = statue;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

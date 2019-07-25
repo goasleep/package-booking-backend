@@ -29,4 +29,9 @@ public class PackageController {
     public void deletePackage(@PathVariable int id){
         packageService.deleteById(id);
     }
+
+    @PostMapping("/packages")
+    public void addPackage(@RequestBody PackageOrder packageOrder){
+        packageService.save(packageOrder);
+    }
 }
