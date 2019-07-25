@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class PackageController {
 
@@ -20,8 +21,8 @@ public class PackageController {
         return packageService.findAll();
     }
 
-    @PutMapping("/packages")
-    public void updatePackage(@RequestBody PackageOrder packageOrder){
+    @PutMapping("/packages/{id}")
+    public void updatePackage(@PathVariable int id,@RequestBody PackageOrder packageOrder){
         packageService.update(packageOrder);
     }
 

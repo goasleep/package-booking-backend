@@ -17,7 +17,7 @@ public class PackageOrder {
 
     private String phoneNumber;
 
-    private String statue;
+    private String statue = "未取件";
 
     private long date;
 

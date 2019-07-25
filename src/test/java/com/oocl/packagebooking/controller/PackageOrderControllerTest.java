@@ -48,7 +48,7 @@ public class PackageOrderControllerTest {
     void should_update_a_package() throws Exception {
         PackageOrder packageOrder = new PackageOrder("123", "2222");
 
-        ResultActions resultActions = mockMvc.perform(put("/packages").contentType(MediaType.APPLICATION_JSON)
+        ResultActions resultActions = mockMvc.perform(put("/packages/{id}",packageOrder.getPackageId()).contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(packageOrder)));
 
         verify(packageService).update(any());
