@@ -21,8 +21,8 @@ public class PackageController {
     }
 
     @PutMapping("/packages")
-    public PackageOrder updatePackage(@RequestBody PackageOrder packageOrder){
-        return packageService.update(packageOrder);
+    public void updatePackage(@RequestBody PackageOrder packageOrder){
+        packageService.update(packageOrder);
     }
 
     @DeleteMapping("/packages/{id}")
