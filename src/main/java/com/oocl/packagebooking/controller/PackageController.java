@@ -15,13 +15,18 @@ public class PackageController {
     PackageService packageService;
 
 
-    @GetMapping("/package")
+    @GetMapping("/packages")
     public List<PackageOrder> findAllPackage(){
         return packageService.findAll();
     }
 
-    @PutMapping("/package")
+    @PutMapping("/packages")
     public PackageOrder updatePackage(@RequestBody PackageOrder packageOrder){
         return packageService.update(packageOrder);
+    }
+
+    @DeleteMapping("/packages/{id}")
+    public void deletePackage(@PathVariable int id){
+        packageService.deleteById(id);
     }
 }

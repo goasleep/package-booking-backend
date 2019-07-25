@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.hamcrest.Matchers.is;
@@ -35,24 +36,32 @@ public class PackageOrderControllerTest {
 
     @Test
     void should_get_all_package() throws Exception {
-        PackageOrder packageOrder1 = new PackageOrder("123","133333");
-        PackageOrder packageOrder2 = new PackageOrder("123","133333");
+        PackageOrder packageOrder1 = new PackageOrder("123", "133333");
+        PackageOrder packageOrder2 = new PackageOrder("123", "133333");
         when(packageService.findAll()).thenReturn(Arrays.asList(packageOrder1, packageOrder2));
-        ResultActions resultActions =mockMvc.perform(get("/package"))
+        ResultActions resultActions = mockMvc.perform(get("/packages"))
                 .andExpect(status().isOk());
         verify(packageService).findAll();
     }
 
     @Test
     void should_update_a_package() throws Exception {
-        PackageOrder packageOrder = new PackageOrder("123","2222");
-        when(packageService.update(any())).thenReturn(packageOrder);
+        PackageOrder packageOrder = new PackageOrder("123", "2222");
 
-        ResultActions resultActions =mockMvc.perform(put("/package").contentType(MediaType.APPLICATION_JSON)
-        .content(new ObjectMapper().writeValueAsString(packageOrder)));
+        ResultActions resultActions = mockMvc.perform(put("/packages").contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(packageOrder)));
 
         verify(packageService).update(any());
 
     }
 
+    @Test
+    void should_delete_a_package_by_id() throws Exception {
+        PackageOrder packageOrder = new PackageOrder("123","222");
+
+        ResultActions resultActions = mockMvc.perform(delete("/packages/{id}",packageOrder.getPackageId()))
+                .andExpect(status().isOk());
+
+        verify(packageService).deleteById(anyInt());
+    }
 }

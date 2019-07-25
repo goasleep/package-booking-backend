@@ -19,4 +19,8 @@ public class PackageService {
     public PackageOrder update(PackageOrder packageOrder) {
         return (PackageOrder) packageRepository.save(packageOrder);
     }
+
+    public void deleteById(int id) {
+        packageRepository.deleteById(id);
+    }
 }
