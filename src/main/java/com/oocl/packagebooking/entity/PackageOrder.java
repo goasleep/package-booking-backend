@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Package {
+public class PackageOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,10 @@ public class Package {
 
     private float weight;
 
-    public Package() {
+    public PackageOrder() {
     }
 
-    public Package(String recipientName, String phoneNumber) {
+    public PackageOrder(String recipientName, String phoneNumber) {
         this.recipientName = recipientName;
         this.phoneNumber = phoneNumber;
     }
